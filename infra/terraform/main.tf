@@ -19,9 +19,15 @@ resource "aws_instance" "app_server" {
     instance_type = "t2.micro"
 
     key_name = "infra"
+    # user_data = <<-EOF
+    #               #!/bin/bash
+    #               cd /home/ubuntu
+    #               echo "<h1>Feito com Terraform</h1>" > index.html
+    #               nohup busybox httpd -f -p 8080 &
+    #               EOF
 
     tags = {
-      Name = "Ubuntu-server-instancia"
+      Name = "teste-aws"
     }
 }
 
