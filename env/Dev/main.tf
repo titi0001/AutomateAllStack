@@ -3,6 +3,7 @@ module "aws-dev" {
     instancia = "t2.micro"
     region_aws = "us-east-2"
     key = "infra-dev"
+    grup_sec = "acesso-geral-dev"
 }
 
 output "IP_public_dev" {

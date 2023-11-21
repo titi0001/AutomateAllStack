@@ -1,12 +1,16 @@
 variable "region_aws" {
-    type = string 
+  type = string 
 }
 
 variable "key" {
-    type = string
+  type = string
 }
 
 variable "instancia" {
+  type = string
+}
+
+variable "grup_sec" {
   type = string
 }
 
