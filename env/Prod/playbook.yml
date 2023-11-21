@@ -25,3 +25,9 @@
         regexp: "ALLOWED_HOSTS"
         line: "ALLOWED_HOSTS = ['*']"
         backrefs: yes
+    
+    - name: configurando o BD
+      shell: '. /home/ubuntu/app/venv/bin/activate; python /home/ubuntu/app/manage.py migrate'
+    
+    - name: carregando os dados BD
+      shell: '. /home/ubuntu/app/venv/bin/activate; python /home/ubuntu/app/manage.py loaddata clientes'
