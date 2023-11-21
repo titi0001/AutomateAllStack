@@ -31,3 +31,6 @@
     
     - name: carregando os dados BD
       shell: '. /home/ubuntu/app/venv/bin/activate; python /home/ubuntu/app/manage.py loaddata clientes'
+
+    - name: Iniciando Server
+      shell: '. /home/ubuntu/app/venv/bin/activate; nohup python /home/ubuntu/app/manage.py runserver 0.0.0.0:8000 &'
