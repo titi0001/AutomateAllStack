@@ -20,17 +20,15 @@ resource "aws_launch_template" "app_template" {
       Name = "Terraform Ansible Python"
     }
     security_group_names = [ var.grup_sec ]
+    user_data = filebase64("ansible.sh")
 }
 resource "aws_key_pair" "keyssh" {
   key_name = var.key
   public_key = file("${var.key}.pub")
 }
 
-output "IP_public" {
-  value = aws_instance.app_server.public_ip
-}
-
 resource "aws_autoscaling_group" "grupo" {
+  availability_zones = [ "${var.region_aws}a", "${var.region_aws}b" ]
   name = var.nomeGrupo
   max_size = var.maximo
   min_size = var.minimo
@@ -39,3 +37,16 @@ resource "aws_autoscaling_group" "grupo" {
     version = "$Latest"
   }
 }
+
+resource "aws_default_subnet" "subnet_1" {
+  availability_zone = "${var.region_aws}a"
+
+  
+}
+
+resource "aws_default_subnet" "subnet_2" {
+  availability_zone = "${var.region_aws}b"
+  
+  
+}
+

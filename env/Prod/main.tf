@@ -8,7 +8,3 @@ module "aws-prod" {
     maximo = 10
     nomeGrupo = "Prod"
 }
-
-output "IP_public_prod" {
-  value = module.aws-prod.IP_public
-}
