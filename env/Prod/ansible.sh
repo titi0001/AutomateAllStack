@@ -14,11 +14,11 @@ tee -a playbook.yml > /dev/null <<EOT
       update_cache: yes
     become: yes
   - name: Clone API
-    ansible.builtin.copy:
-      src: /home/thiago/All-projects/TerraAnsKube-Infra/api/
+    ansible.builtin.git:
+      repo: https://github.com/titi0001/api-exanple-python.git
       dest: /home/ubuntu/app
-      remote_src: yes
-      recurse: yes
+      version: main
+      force: yes
   - name: Instalando dependencias com pip (Django e Django rest)
     pip: 
       virtualenv: /home/ubuntu/app/venv
