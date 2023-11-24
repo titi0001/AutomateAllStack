@@ -17,7 +17,8 @@ tee -a playbook.yml > /dev/null <<EOT
     ansible.builtin.copy:
       src: /home/thiago/All-projects/TerraAnsKube-Infra/api/
       dest: /home/ubuntu/app
-      remote_src: no
+      remote_src: yes
+      recurse: yes
   - name: Instalando dependencias com pip (Django e Django rest)
     pip: 
       virtualenv: /home/ubuntu/app/venv
