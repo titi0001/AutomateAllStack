@@ -1,4 +1,10 @@
-- hosts: terraform-ansible
+#!/bin/bash
+cd /home/ubuntu
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo python3 get-pip.py
+sudo python3 -m pip install ansible
+tee -a playbook.yml > /dev/null <<EOT
+- hosts: localhost
   tasks:
   - name: Instalando Python3, virtualenv
     apt:
@@ -31,3 +37,5 @@
 
   - name: Iniciando Server
     shell: '. /home/ubuntu/app/venv/bin/activate; nohup python /home/ubuntu/app/manage.py runserver 0.0.0.0:8000 &'
+EOT
+ansible-playbook playbook.yml

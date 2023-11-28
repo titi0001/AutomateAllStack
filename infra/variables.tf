@@ -14,3 +14,18 @@ variable "grup_sec" {
   type = string
 }
 
+variable "minimo" {
+  type = number
+}
+
+variable "maximo" {
+  type = number
+}
+
+variable "nomeGrupo" {
+  type = string
+}
+
+variable "producao" {
+  type = bool
+}
