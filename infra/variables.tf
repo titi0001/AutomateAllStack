@@ -29,3 +29,7 @@ variable "nomeGrupo" {
 variable "producao" {
   type = bool
 }
+
+variable "ecr_name" {
+  type = string
+}
