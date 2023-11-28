@@ -1,11 +1,10 @@
-module "aws-prod" {
-    source = "../../infra"
-    instancia = "t2.micro"
-    region_aws = "us-east-2"
-    key = "infra-prod"
-    grup_sec = "producao"
-    minimo = 1
-    maximo = 10
-    nomeGrupo = "Prod"
-    producao = true
+module "prod" {
+  source = "../../infra"
+  region_aws = "us-west-2"
+  
+  ecr_name = "Producao"
+  descricao = "Aplicacao-de-producao"
+  ambiente = "Ambiante-de-producao"
+  maquina = "t2.micro"
+  max-aplicacao = 5
 }
