@@ -1,17 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-        source = "hashicorp/aws"
-        version = "~> 3.27"
-    }
-  }
-  required_version = ">= 0.14.9"
-}
-provider "aws" {
-   profile = "default"
-   region = var.region_aws
-}
-
 resource "aws_launch_template" "app_template" {
     image_id = "ami-0e83be366243f524a"
     instance_type = var.instancia
