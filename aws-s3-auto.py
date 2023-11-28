@@ -1,8 +1,8 @@
 import boto3
 
 # Substitua 'SEU_NOME_DE_BUCKET' pelo nome desejado para o bucket
-bucket_name = 'terraform-state-alura-thiago'
-region = 'us-east-2'  # Substitua pela região desejada
+bucket_name = 'terraform-state-alura-stalkbean'
+region = 'us-west-2'  # Substitua pela região desejada
 
 # Criação de um cliente S3
 s3_client = boto3.client('s3', region_name=region)
