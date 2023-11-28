@@ -20,7 +20,7 @@ resource "aws_launch_template" "app_template" {
       Name = "Terraform Ansible Python"
     }
     security_group_names = [ var.grup_sec ]
-    user_data = filebase64("ansible.sh")
+    user_data = var.producao ? filebase64("ansible.sh") : ""
 }
 resource "aws_key_pair" "keyssh" {
   key_name = var.key
@@ -36,8 +36,30 @@ resource "aws_autoscaling_group" "grupo" {
     id = aws_launch_template.app_template.id
     version = "$Latest"
   }
-  target_group_arns = [ aws_lb_target_group.alvoLoadBalancer.arn ]
+  target_group_arns = var.producao ? [ aws_lb_target_group.alvoLoadBalancer[0].arn ] : []
 }
+
+resource "aws_autoscaling_schedule" "liga" {
+  scheduled_action_name = "liga"
+  min_size = 0
+  max_size = 1
+  desired_capacity = 1  
+  start_time = timeadd(timestamp(), "10m")
+  recurrence = "0 10 * * MON-Fri"
+  autoscaling_group_name = aws_autoscaling_group.grupo
+}
+
+resource "aws_autoscaling_schedule" "desliga" {
+  scheduled_action_name = "desliga"
+  min_size = 0
+  max_size = 1
+  desired_capacity = 0 
+  start_time = timeadd(timestamp(), "11m")
+  recurrence = "0 21 * * MON-Fri"
+  autoscaling_group_name = aws_autoscaling_group.grupo
+}
+
+
 
 resource "aws_default_subnet" "subnet_1" {
   availability_zone = "${var.region_aws}a"
@@ -50,6 +72,7 @@ resource "aws_default_subnet" "subnet_2" {
 resource "aws_lb" "loadBalancer" {
   internal = false
   subnets = [ aws_default_subnet.subnet_1.id, aws_default_subnet.subnet_2.id ]
+  count = var.producao ? 1 : 0
 }
 
 resource "aws_default_vpc" "vpc" {
@@ -60,16 +83,18 @@ resource "aws_lb_target_group" "alvoLoadBalancer" {
   port = "8000"
   protocol = "HTTP"
   vpc_id = aws_default_vpc.vpc.id
+  count = var.producao ? 1 : 0
 }
 
 resource "aws_lb_listener" "entradaLoadBalancer" {
-  load_balancer_arn = aws_lb.loadBalancer.arn
+  load_balancer_arn = aws_lb.loadBalancer[0].arn
   port = "8000"
   protocol = "HTTP"
   default_action {
     type = "forward"
-    target_group_arn = aws_lb_target_group.alvoLoadBalancer.arn
+    target_group_arn = aws_lb_target_group.alvoLoadBalancer[0].arn
   }
+  count = var.producao ? 1 : 0
 }
 
 resource "aws_autoscaling_policy" "escala-Producao" {
@@ -82,4 +107,5 @@ resource "aws_autoscaling_policy" "escala-Producao" {
     }
     target_value = 50.0
   }
+  count = var.producao ? 1 : 0
 }
