@@ -30,8 +30,14 @@ Automação de configurações e operações em servidores e infraestrutura.
 
 Manifestos e configurações para implantação e gerenciamento de aplicativos na orquestração de contêineres.
 
-## Como Contribuir:
+# Criar um Bucket no Amazon S3
 
-Sua contribuição é fundamental para aprimorar e expandir esse repositório. Sinta-se à vontade para reportar problemas, sugerir melhorias ou enviar solicitações de pull. Juntos, continuaremos a fortalecer a automação e a eficiência na gestão da infraestrutura como código.
+Para criar um bucket no Amazon S3 usando a Phython, execute o seguinte comando no terminal,
 
-Explore, colabore e automatize com TerraAnsKube-Infra!
+```bash
+pip install boto3
+python3 aws-s3-auto.py
+```
+substituindo "SEU_NOME_DE_BUCKET" pelo nome desejado e "SUA_REGIAO" pela região desejada:
+
+

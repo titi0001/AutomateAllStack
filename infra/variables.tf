@@ -1,31 +1,31 @@
 variable "region_aws" {
-  type = string 
-}
-
-variable "key" {
   type = string
 }
 
-variable "instancia" {
+variable "ecr_name" {
   type = string
 }
 
-variable "grup_sec" {
+variable "nome" {
   type = string
 }
 
-variable "minimo" {
+variable "descricao" {
+  type = string
+}
+
+variable "ambiente" {
+  type = string
+}
+
+variable "maquina" {
+  type = string
+}
+
+variable "max-aplicacao" {
   type = number
 }
 
-variable "maximo" {
-  type = number
-}
-
-variable "nomeGrupo" {
+variable "nome-s3" {
   type = string
-}
-
-variable "producao" {
-  type = bool
 }

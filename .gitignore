@@ -36,3 +36,6 @@ infra-prod
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+#include shell script
+*.sh
