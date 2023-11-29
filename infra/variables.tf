@@ -6,6 +6,10 @@ variable "ecr_name" {
   type = string
 }
 
+variable "nome" {
+  type = string
+}
+
 variable "descricao" {
   type = string
 }
