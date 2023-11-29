@@ -21,3 +21,7 @@ variable "maquina" {
 variable "max-aplicacao" {
   type = number
 }
+
+variable "nome-s3" {
+  type = string
+}

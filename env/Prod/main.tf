@@ -7,4 +7,6 @@ module "prod" {
   ambiente = "ambiante-de-producao"
   maquina = "t2.micro"
   max-aplicacao = 5
+
+  nome-s3 = "producao"
 }
