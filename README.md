@@ -26,10 +26,6 @@ Modelos reutilizáveis para provisionamento eficaz de recursos.
 
 Automação de configurações e operações em servidores e infraestrutura.
 
-### Configurações Kubernetes:
-
-Manifestos e configurações para implantação e gerenciamento de aplicativos na orquestração de contêineres.
-
 # Criar um Bucket no Amazon S3
 
 Para criar um bucket no Amazon S3 usando a Phython, execute o seguinte comando no terminal,
