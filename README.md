@@ -1,4 +1,4 @@
-# Bem-vindo ao TerraAnsKube-Infra
+# Bem-vindo ao TerraAns-Infra
 
 Bem-vindo ao TerraAnsKube-Infra, seu hub central para a gestão de infraestrutura como código (IaC) de maneira eficiente e automatizada. Este repositório é dedicado à integração harmoniosa de três pilares essenciais: Terraform, Ansible e Kubernetes.
 
